@@ -68,9 +68,11 @@ supersampling, while 2D, fonts and grain stay as the console drew them?
 - **Wire protocol** — [Groovy](https://github.com/psakhis/Groovy_MiSTer), designed by psakhis
   for Groovy_MiSTer and GroovyMAME. The aim is to stay compatible with GroovyMAME.
 
-Anti-aliased 3D at native resolution comes from the cores themselves: SwanStation (PlayStation)
-already does it; paraLLEl-GS (PlayStation 2) and paraLLEl-RDP (Nintendo 64) look promising and
-are still being tested. The bridge only carries the frame they produce.
+Anti-aliased 3D at native resolution mostly comes from the cores themselves: SwanStation
+(PlayStation) and paraLLEl-GS (PlayStation 2) render supersampled and hand over a native-size
+frame. For a core without its own downscale, like Flycast (Dreamcast), the bridge can average
+a 2×, 4× or 8× frame down to native size before sending it. paraLLEl-RDP (Nintendo 64) works
+too, but some games run slow in the core. All of this has only been checked on one bench.
 
 ## Things I would like to try
 
@@ -83,14 +85,24 @@ shows.
 | Repository | What it is |
 |---|---|
 | [RetroArch](https://github.com/crt-bridge/RetroArch) | The emitter: a RetroArch fork. The work lives on the `crt-bridge` branch. |
+| [libgm](https://github.com/crt-bridge/libgm) | The C library that speaks the Groovy protocol, embedded in the emitter. |
 
-The rest is still in a private development repository and may be published later.
+The receiver and the rest are still in a private development repository and may be published
+later.
+
+## Download
+
+A first pre-release of the emitter, for Windows and Linux:
+[crt-bridge emitter v1.22.2-crtbridge.1](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.1).
+It needs a Groovy receiver on the other side. crt-bridge's own receiver is not published yet;
+a MiSTer running Groovy_MiSTer speaks the same protocol, but I have not tried that combination.
+The known limitations are listed with the release.
 
 ## Status
 
 Early and personal. It runs on one bench — a JVC broadcast CRT, a Radeon HD 7750 receiver,
-Windows and Linux emitters, a MacBook as follower — and has not been tried anywhere else. It is
-not packaged, and there are known bugs. Feedback is welcome, but support is not something I can
+Windows and Linux emitters, a MacBook as follower — and has not been tried anywhere else. Only
+the emitter is packaged, as a pre-release, and there are known bugs. Feedback is welcome, but support is not something I can
 promise.
 
 ## Credits
@@ -108,13 +120,14 @@ This builds on other people's work:
 - **The Switchres authors** (Chris Kennedy, Antonio Giner, Alexandre Wodarczyk, Gil Delescluse,
   per its source) — the modeline engine the receiver uses.
 - **The RetroArch and libretro teams** — the frontend this fork extends.
-- **Stenzek** (DuckStation, which SwanStation derives from) and **Themaister** (paraLLEl-RDP,
-  paraLLEl-GS) — the cores whose native-resolution supersampling this project relies on.
+- **Stenzek** (DuckStation, which SwanStation derives from), **Themaister** (paraLLEl-RDP,
+  paraLLEl-GS) and **the Flycast team** — the cores whose native-resolution supersampling this
+  project relies on.
 - **Yann Collet** — LZ4.
 
 ## License
 
-The RetroArch fork is GPL-3.0, like RetroArch. crt-bridge is not affiliated with, or endorsed
+The RetroArch fork and libgm are GPL-3.0, like RetroArch. crt-bridge is not affiliated with, or endorsed
 by, the libretro project.
 
 ---
