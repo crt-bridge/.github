@@ -86,24 +86,31 @@ shows.
 |---|---|
 | [RetroArch](https://github.com/crt-bridge/RetroArch) | The emitter: a RetroArch fork. The work lives on the `crt-bridge` branch. |
 | [libgm](https://github.com/crt-bridge/libgm) | The C library that speaks the Groovy protocol, embedded in the emitter. |
+| [libretro-crt-bridge](https://github.com/crt-bridge/libretro-crt-bridge) | The software receiver: a libretro core that plays the stream on a second computer. |
 
-The receiver and the rest are still in a private development repository and may be published
-later.
+The CRT receiver and the rest are still in a private development repository and may be
+published later.
 
 ## Download
 
-A first pre-release of the emitter, for Windows and Linux:
-[crt-bridge emitter v1.22.2-crtbridge.1](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.1).
-It needs a Groovy receiver on the other side. crt-bridge's own receiver is not published yet;
-a MiSTer running Groovy_MiSTer speaks the same protocol, but I have not tried that combination.
-The known limitations are listed with the release.
+Two pre-releases that work together, so that two computers are enough:
+
+- [crt-bridge emitter v1.22.2-crtbridge.2](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.2),
+  for Windows and Linux — runs the game and sends it;
+- [crt-bridge client v0.1.0](https://github.com/crt-bridge/libretro-crt-bridge/releases/tag/v0.1.0),
+  for Windows, Linux and macOS — receives it in RetroArch on another computer.
+
+Each release lists what was tested on which platform, and its known limitations. Over Wi-Fi,
+turn on the emitter's Padded Session setting. The protocol has no authentication: keep it on
+a local network. crt-bridge's CRT receiver is not published yet; a MiSTer running Groovy_MiSTer
+speaks the same protocol, but I have not tried that combination.
 
 ## Status
 
 Early and personal. It runs on one bench — a JVC broadcast CRT, a Radeon HD 7750 receiver,
-Windows and Linux emitters, a MacBook as follower — and has not been tried anywhere else. Only
-the emitter is packaged, as a pre-release, and there are known bugs. Feedback is welcome, but support is not something I can
-promise.
+Windows and Linux emitters, a MacBook as follower — and has not been tried anywhere else. The
+emitter and the software receiver are packaged, as pre-releases; the CRT receiver is not. There
+are known bugs. Feedback is welcome, but support is not something I can promise.
 
 ## Credits
 
