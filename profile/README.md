@@ -95,7 +95,7 @@ published later.
 
 Two pre-releases that work together, so that two computers are enough:
 
-- [crt-bridge emitter v1.22.2-crtbridge.3](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.3),
+- [crt-bridge emitter v1.22.2-crtbridge.4](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.4),
   for Windows and Linux — runs the game and sends it;
 - [crt-bridge client v0.1.0](https://github.com/crt-bridge/libretro-crt-bridge/releases/tag/v0.1.0),
   for Windows, Linux and macOS — receives it in RetroArch on another computer.
