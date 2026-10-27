@@ -62,7 +62,7 @@ supersampling, while 2D, fonts and grain stay as the console drew them?
 
 - **Emitter** — a RetroArch fork with a recording driver that captures the core's frame at its
   native size, before any shader, and sends it. Tested on Windows and Linux.
-- **Master receiver** — a real-time Linux image, booted from the network, driving an AMD card's
+- **Master receiver** — a real-time Linux image, booted from a USB stick, driving an AMD card's
   analog output at 15 kHz. The emitter follows its clock.
 - **Followers** — up to four software receivers (a libretro core) fed from the same stream.
 - **Wire protocol** — [Groovy](https://github.com/psakhis/Groovy_MiSTer), designed by psakhis
@@ -86,30 +86,32 @@ shows.
 |---|---|
 | [RetroArch](https://github.com/crt-bridge/RetroArch) | The emitter: a RetroArch fork. The work lives on the `crt-bridge` branch. |
 | [libgm](https://github.com/crt-bridge/libgm) | The C library that speaks the Groovy protocol, embedded in the emitter. |
+| [crt-bridge-receiver](https://github.com/crt-bridge/crt-bridge-receiver) | The CRT receiver: a bootable USB stick image and its sources. |
 | [libretro-crt-bridge](https://github.com/crt-bridge/libretro-crt-bridge) | The software receiver: a libretro core that plays the stream on a second computer. |
-
-The CRT receiver and the rest are still in a private development repository and may be
-published later.
 
 ## Download
 
-Two pre-releases that work together, so that two computers are enough:
+Three pre-releases that work together:
 
 - [crt-bridge emitter v1.22.2-crtbridge.4](https://github.com/crt-bridge/RetroArch/releases/tag/v1.22.2-crtbridge.4),
   for Windows and Linux — runs the game and sends it;
+- [crt-bridge receiver v0.1.0](https://github.com/crt-bridge/crt-bridge-receiver/releases/tag/v0.1.0),
+  a USB stick image — boots a PC with an AMD card that drives a 15 kHz CRT;
 - [crt-bridge client v0.1.0](https://github.com/crt-bridge/libretro-crt-bridge/releases/tag/v0.1.0),
   for Windows, Linux and macOS — receives it in RetroArch on another computer.
 
-Each release lists what was tested on which platform, and its known limitations. Over Wi-Fi,
-turn on the emitter's Padded Session setting. The protocol has no authentication: keep it on
-a local network. crt-bridge's CRT receiver is not published yet; a MiSTer running Groovy_MiSTer
-speaks the same protocol, but I have not tried that combination.
+To go from an empty PC to a picture on the tube, start with the
+[guide](https://github.com/crt-bridge/crt-bridge-receiver/blob/main/GUIDE.md), and read its
+section on the tube first. Each release lists what was tested on which platform, and its known
+limitations. Over Wi-Fi, turn on the emitter's Padded Session setting. The protocol has no
+authentication: keep it on a local network. A MiSTer running Groovy_MiSTer speaks the same
+protocol, but I have not tried that combination.
 
 ## Status
 
 Early and personal. It runs on one bench — a JVC broadcast CRT, a Radeon HD 7750 receiver,
 Windows and Linux emitters, a MacBook as follower — and has not been tried anywhere else. The
-emitter and the software receiver are packaged, as pre-releases; the CRT receiver is not. There
+emitter, the CRT receiver and the software receiver are packaged, as pre-releases. There
 are known bugs. Feedback is welcome, but support is not something I can promise.
 
 ## Credits
@@ -134,7 +136,7 @@ This builds on other people's work:
 
 ## License
 
-The RetroArch fork and libgm are GPL-3.0, like RetroArch. crt-bridge is not affiliated with, or endorsed
+The RetroArch fork and libgm are GPL-3.0, like RetroArch; the CRT receiver is GPL-3.0-or-later. crt-bridge is not affiliated with, or endorsed
 by, the libretro project.
 
 ---
